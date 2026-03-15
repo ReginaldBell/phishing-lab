@@ -1,0 +1,58 @@
+# ─── Secrets & Environment Variables ────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ─── GoPhish ─────────────────────────────────────────────────────────────────
+# GoPhish config contains admin credentials and API keys
+gophish/config.json
+gophish/*.db
+gophish/*.key
+gophish/*.crt
+gophish/*.pem
+
+# ─── Postfix / Dovecot ───────────────────────────────────────────────────────
+postfix/main.cf
+postfix/sasl_passwd
+postfix/sasl_passwd.db
+dovecot/dovecot.conf
+dovecot/passwd
+dovecot/*.pem
+dovecot/*.key
+dovecot/*.crt
+
+# ─── Wazuh ───────────────────────────────────────────────────────────────────
+wazuh/ossec.conf
+wazuh/authd.pass
+wazuh/client.keys
+wazuh/*.pem
+wazuh/*.key
+wazuh/*.crt
+
+# ─── TLS / PKI ───────────────────────────────────────────────────────────────
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.cer
+
+# ─── Local Lab Notes ─────────────────────────────────────────────────────────
+# Files that typically capture IP addresses, hostnames, or personal lab details
+notes/local-*.md
+notes/local-*.txt
+*-local.md
+*-local.txt
+lab-notes.md
+lab-notes.txt
+ips.txt
+hosts-local.txt
+
+# ─── OS / Editor Noise ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/settings.json
+.idea/
