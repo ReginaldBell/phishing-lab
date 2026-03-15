@@ -1,0 +1,45 @@
+<group name="local,phishing_lab,">
+
+  <rule id="100100" level="5">
+    <decoded_as>aws-eks-authenticator</decoded_as>
+    <match>Email sent</match>
+    <description>GoPhish email sent to phishing target</description>
+    <group>phishing,gophish,email_delivery,</group>
+  </rule>
+
+  <rule id="100101" level="9">
+    <match>GET /?rid=</match>
+    <description>GoPhish RID click from wkstn01</description>
+    <mitre>
+      <id>T1566</id>
+    </mitre>
+    <group>phishing,gophish,click,initial_access,</group>
+  </rule>
+
+  <rule id="100103" level="6">
+    <if_sid>9701</if_sid>
+    <srcip>192.168.56.20</srcip>
+    <dstip>192.168.56.70</dstip>
+    <description>Dovecot IMAP login for labuser from wkstn01</description>
+    <group>phishing,mail,dovecot,imap,authentication_success,</group>
+  </rule>
+
+  <rule id="100102" level="6">
+    <if_sid>9700</if_sid>
+    <match>saved mail to INBOX</match>
+    <description>Dovecot saved GoPhish message to labuser INBOX</description>
+    <group>phishing,mail,dovecot,delivery,</group>
+  </rule>
+
+  <rule id="100104" level="10" frequency="2" timeframe="1800">
+    <if_sid>100101</if_sid>
+    <if_matched_sid>100102</if_matched_sid>
+    <global_frequency />
+    <description>Phishing scenario detected: labuser mailbox delivery followed by RID click from wkstn01</description>
+    <mitre>
+      <id>T1566</id>
+    </mitre>
+    <group>phishing,correlation,high_confidence,</group>
+  </rule>
+
+</group>

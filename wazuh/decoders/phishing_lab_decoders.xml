@@ -1,0 +1,23 @@
+<decoder name="phishing-lab-gophish-email-sent">
+  <prematch>Email sent</prematch>
+  <regex type="pcre2">^time="([^"]+)" level=info msg="Email sent" email="[^"]* &lt;([^&]+)&gt;" envelope_from="[^"]* &lt;([^&]+)&gt;" smtp_from=([^\s]+)</regex>
+  <order>extra_data,dstuser,srcuser,user</order>
+</decoder>
+
+<decoder name="phishing-lab-gophish-click">
+  <prematch>GET /</prematch>
+  <regex type="pcre2">^time="([^"]+)" level=info msg="([0-9.]+).*GET /\?rid=([A-Za-z0-9]+) HTTP/1\.1.*"</regex>
+  <order>extra_data,srcip,id</order>
+</decoder>
+
+<decoder name="phishing-lab-dovecot-lmtp-save">
+  <prematch>saved mail to INBOX</prematch>
+  <regex type="pcre2">dovecot\[[0-9]+\]: lmtp\(([^)]+)\)&lt;[^&]+&gt;: msgid=&lt;([^&]+)&gt;: saved mail to INBOX</regex>
+  <order>dstuser,id</order>
+</decoder>
+
+<decoder name="phishing-lab-dovecot-imap-login">
+  <prematch>imap-login: Login:</prematch>
+  <regex type="pcre2">dovecot\[[0-9]+\]: imap-login: Login: user=&lt;([^&]+)&gt;, method=([^,]+), rip=([0-9.]+), lip=([0-9.]+)</regex>
+  <order>dstuser,action,srcip,dstip</order>
+</decoder>

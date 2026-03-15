@@ -1,0 +1,13 @@
+# Installers and large binaries
+artifacts/installers/
+artifacts/
+
+# Operational scratch scripts (passwords redacted but not portfolio artifacts)
+scripts/linux/tmp_*.sh
+scripts/linux/reset-gophish-pass.sh
+
+# Common OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
