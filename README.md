@@ -1,6 +1,6 @@
 # Phishing Lab
 
-![Correlated incident alert 100104 firing in Wazuh](docs/assets/screenshots/siem01-sprint4-correlation-100104-2026-03-14.png)
+![Phishing Detection Pipeline — Delivery to Correlated SIEM Alert](docs/assets/screenshots/phishing-pipeline-static.png)
 
 Windows-side workspace for the phishing simulation extension to the Enterprise AD lab. All six project phases are complete as of March 14, 2026.
 
@@ -66,6 +66,8 @@ ansible/
 
 ## Detection Rules
 
+![Phishing Detection Pipeline — Delivery to Correlated SIEM Alert](docs/assets/screenshots/phishing-pipeline-static.png)
+
 | Rule ID | Description |
 |---------|-------------|
 | 100100 | GoPhish email sent to target |
@@ -75,6 +77,10 @@ ansible/
 | 100104 | Correlated incident — mailbox delivery followed by RID click |
 
 Rule `100104` is the high-confidence incident indicator. It requires both a prior delivery event and a real RID click within a 30-minute window across agents.
+
+**Live proof — rule 100104 firing in Wazuh on 2026-03-14:**
+
+![Correlated incident alert 100104 firing in Wazuh](docs/assets/screenshots/siem01-sprint4-correlation-100104-2026-03-14.png)
 
 ## Accepted Scope Limitations
 
